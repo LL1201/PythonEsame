@@ -68,7 +68,7 @@ while running:
     player.draw(screen)
     obstacles.draw(screen)
     obstacles.update()
-    blocks_hit_list = pygame.sprite.spritecollide(player, obstacles, True)
+    pygame.sprite.spritecollide(player, obstacles, True)
     pygame.display.update()
 
     clock.tick(40)

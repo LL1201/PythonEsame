@@ -24,6 +24,8 @@ class Obstacle(pygame.sprite.Sprite):
         self.currentSprite = 0
         self.image = self.sprites[self.currentSprite]
 
+        self.mask = pygame.mask.from_surface(self.image[0])
+
         self.rect = self.image.get_rect()
         self.rect.topleft = [posx, posy]
 

@@ -7,6 +7,8 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(
             playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
 
+        self.mask = pygame.mask.from_surface(self.image)
+
         self.rect = self.image.get_rect()
 
         self.displayW, displayH = pygame.display.get_surface().get_size()
