@@ -6,6 +6,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         # self.image = pygame.transform.scale(
         #    playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
+        self.sprites = []
         self.image = pygame.image.load(
             "images\\assets\\player\\player.png").convert_alpha()
 
@@ -33,3 +34,11 @@ class Player(pygame.sprite.Sprite):
 
     def draw(self, surface):
         surface.blit(self.image, (self.x, self.y))
+
+    @property
+    def mask(self):
+        return self.__mask
+
+    @mask.setter
+    def mask(self, value):
+        self.__mask = value
