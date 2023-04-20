@@ -4,23 +4,9 @@ import pygame
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, posx, posy):
         super().__init__()
-        self.sprites = []
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-1.png").convert_alpha())
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-2.png").convert_alpha())
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-3.png").convert_alpha())
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-4.png").convert_alpha())
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-5.png").convert_alpha())
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\B500-2.png"))
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\B500-3.png"))
-        self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\B500-4.png"))
+        self.sprites = [pygame.image.load(
+            f"images\\assets\\fireball\\FB500-{i}.png").convert_alpha() for i in range(1, 9)]
+
         self.currentSprite = 0
         self.image = self.sprites[self.currentSprite]
 

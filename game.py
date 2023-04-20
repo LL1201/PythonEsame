@@ -24,9 +24,9 @@ def randomObstacleProperties():
             tryCount = 0
             # se c'è più di un ostacolo, verifica la distanza
             # con quello precedente
-            # se entro due cicli non viene generata una nuova
+            # se entro un ciclo non viene generata una nuova
             # coordinata x valida l'ostacolo viene posizionato fuori dallo schermo
-            while abs(posx[-1] - randPos) < 150 or tryCount < 1:
+            while abs(posx[-1] - randPos) < 150 and tryCount < 1:
                 randPos = random.randint(-25, 250)
                 tryCount += 1
             if tryCount == 1:
@@ -77,7 +77,7 @@ while running:
     if int(newObstaclesCount) != 0:
         obstacles.add(generateObstacles())
         newObstaclesCount = 0
-    newObstaclesCount += 0.02
+    newObstaclesCount += 0.025
 
     screen.fill((255, 255, 255))
 
