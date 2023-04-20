@@ -2,17 +2,19 @@ import pygame
 
 
 class Player(pygame.sprite.Sprite):
-    def __init__(self, playerImage):
+    def __init__(self):
         super().__init__()
-        self.image = pygame.transform.scale(
-            playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
+        # self.image = pygame.transform.scale(
+        #    playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
+        self.image = pygame.image.load(
+            "images\\assets\\player\\player.png").convert_alpha()
 
         self.image.convert_alpha()
         self.rect = self.image.get_rect()
 
         self.displayW, displayH = pygame.display.get_surface().get_size()
-        self.x = self.displayW/2 - playerImage.get_rect().width/12
-        self.y = displayH - playerImage.get_rect().height/6
+        self.x = self.displayW/2 - self.image.get_rect().width
+        self.y = displayH - self.image.get_rect().height
         self.rect.topleft = [self.x, self.y]
         self.mask = pygame.mask.from_surface(self.image)
 
