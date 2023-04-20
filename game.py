@@ -17,16 +17,19 @@ screen = pygame.display.set_mode((screenW, screenH))
 def randomObstacleProperties():
     n = random.randint(1, 2)
     posx = []
+    tryCount = 0
 
     for i in range(n):
         if i > 0:
             randPos = random.randint(-25, 250)
-            if abs(posx[-1] - randPos) < 150:
-                if randPos + 150 > screenW:
-                    posx.append(randPos - 150)
-                else:
-                    posx.append(randPos + 150)
-            posx.append(randPos)
+            # if abs(posx[-1] - randPos) < 150:
+            while abs(posx[-1] - randPos) < 150 or tryCount < 1:
+                randPos = random.randint(-25, 250)
+                tryCount += 1
+            if tryCount == 1:
+                posx.append(400)
+            else:
+                posx.append(randPos)
         else:
             posx.append(random.randint(-25, 250))
 
@@ -48,6 +51,7 @@ pygame.init()
 player = Player.Player(playerImage)
 obstacles = pygame.sprite.Group()
 newObstaclesCount = 1
+collisions = 0
 
 while running:
     for event in pygame.event.get():
@@ -68,7 +72,10 @@ while running:
     player.draw(screen)
     obstacles.draw(screen)
     obstacles.update()
-    pygame.sprite.spritecollide(player, obstacles, True)
+    if pygame.sprite.spritecollide(player, obstacles, True, pygame.sprite.collide_mask):
+        collisions += 1
+        print(collisions)
+
     pygame.display.update()
 
     clock.tick(40)

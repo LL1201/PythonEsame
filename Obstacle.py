@@ -6,15 +6,15 @@ class Obstacle(pygame.sprite.Sprite):
         super().__init__()
         self.sprites = []
         self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-1.png"))
+            "images\\assets\\fireball\\FB500-1.png").convert_alpha())
         self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-2.png"))
+            "images\\assets\\fireball\\FB500-2.png").convert_alpha())
         self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-3.png"))
+            "images\\assets\\fireball\\FB500-3.png").convert_alpha())
         self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-4.png"))
+            "images\\assets\\fireball\\FB500-4.png").convert_alpha())
         self.sprites.append(pygame.image.load(
-            "images\\assets\\fireball\\FB500-5.png"))
+            "images\\assets\\fireball\\FB500-5.png").convert_alpha())
         self.sprites.append(pygame.image.load(
             "images\\assets\\fireball\\B500-2.png"))
         self.sprites.append(pygame.image.load(
@@ -24,10 +24,9 @@ class Obstacle(pygame.sprite.Sprite):
         self.currentSprite = 0
         self.image = self.sprites[self.currentSprite]
 
-        self.mask = pygame.mask.from_surface(self.image[0])
-
         self.rect = self.image.get_rect()
         self.rect.topleft = [posx, posy]
+        self.mask = pygame.mask.from_surface(self.sprites[0])
 
         self.w, self.h = pygame.display.get_surface().get_size()
         self.x = posx
@@ -37,7 +36,7 @@ class Obstacle(pygame.sprite.Sprite):
     def move(self):
         self.y += 4
         self.rect.topleft = [self.x, self.y]
-        if self.y == 400:
+        if self.y == 500:
             self.explodes = True
             self.currentSprite = 5
 

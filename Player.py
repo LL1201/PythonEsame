@@ -7,14 +7,14 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.scale(
             playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
 
-        self.mask = pygame.mask.from_surface(self.image)
-
+        self.image.convert_alpha()
         self.rect = self.image.get_rect()
 
         self.displayW, displayH = pygame.display.get_surface().get_size()
         self.x = self.displayW/2 - playerImage.get_rect().width/12
         self.y = displayH - playerImage.get_rect().height/6
         self.rect.topleft = [self.x, self.y]
+        self.mask = pygame.mask.from_surface(self.image)
 
     def handle_keys(self):
         try:
