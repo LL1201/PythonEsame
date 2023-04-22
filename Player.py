@@ -8,9 +8,9 @@ class Player(pygame.sprite.Sprite):
         #    playerImage, (playerImage.get_rect().width/6, playerImage.get_rect().height/6))
         self.sprites = []
         self.sprites = [pygame.transform.scale(pygame.image.load(
-            f"images\\assets\\player\\Idle{i}.png").convert_alpha(), (160, 160)) for i in range(1, 5)]
+            f"images//assets//player//Idle{i}.png").convert_alpha(), (160, 160)) for i in range(1, 5)]
         self.sprites += [pygame.transform.scale(pygame.image.load(
-            f"images\\assets\\player\\Run{i}.png").convert_alpha(), (160, 160)) for i in range(1, 9)]
+            f"images//assets//player//Run{i}.png").convert_alpha(), (160, 160)) for i in range(1, 9)]
 
         self.currentSprite = 0
         self.image = self.sprites[self.currentSprite]
