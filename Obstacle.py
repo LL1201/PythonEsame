@@ -1,11 +1,12 @@
+from pathlib import Path
 import pygame
 
 
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, posx, posy):
         super().__init__()
-        self.sprites = [pygame.image.load(
-            f"images//assets//fireball//FB500-{i}.png").convert_alpha() for i in range(1, 9)]
+        self.sprites = [pygame.image.load(Path(
+            f"images/assets/fireball/FB500-{i}.png")).convert_alpha() for i in range(1, 9)]
 
         self.currentSprite = 0
         self.image = self.sprites[self.currentSprite]
