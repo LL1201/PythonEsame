@@ -2,7 +2,6 @@ import pygame
 import random
 import Player
 import Obstacle
-import os
 
 # parametri schermo
 screenW = 400
@@ -84,6 +83,7 @@ while running:
     # input tasti e draw del player
     player.draw(screen)
     player.handle_keys()
+    player.update()
 
     # draw del gruppo di ostacoli e aggiornamento con update
     # dell'animazione
