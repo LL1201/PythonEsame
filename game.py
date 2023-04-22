@@ -2,6 +2,7 @@ import pygame
 import random
 import Player
 import Obstacle
+import Menu
 
 
 class Game():
@@ -98,7 +99,9 @@ class Game():
             # viene incrementato il count delle collisioni
             if pygame.sprite.spritecollide(self.player, self.obstacles, True, pygame.sprite.collide_mask):
                 self.collisions += 1
-                print(self.collisions)
-
+                if self.collisions == 3:
+                    Menu.Menu(True).startMenu()
+                    self.player.kill()
+                    self.kill()
             pygame.display.update()
             self.clock.tick(40)

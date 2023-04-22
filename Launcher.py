@@ -1,2 +1,2 @@
 import Menu
-Menu.Menu().startMenu()
+Menu.Menu(False).startMenu()

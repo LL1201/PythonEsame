@@ -3,7 +3,7 @@ import Game
 
 
 class Menu():
-    def __init__(self):
+    def __init__(self, gameOver):
         pygame.init()
         # parametri schermo
         self.screenW = 400
@@ -11,20 +11,28 @@ class Menu():
         self.screen = pygame.display.set_mode((self.screenW, self.screenH))
         pygame.display.set_caption('Menu di Avvio')
         self.font = pygame.font.Font(None, 50)
-        self.title = self.font.render(
-            "Press Enter to Play", True, (255, 255, 255))
+        self.gameOver = gameOver
 
     def startMenu(self):
-        self.screen.blit(self.title, (50, 100))  # centraggio titolo
+        if self.gameOver:
+            self.screen.blit(self.font.render(
+                "GAME OVER", True, (255, 255, 255)), (100, 100))
+            self.screen.blit(self.font.render(
+                "Press Enter to Restart", True, (255, 255, 255)), (20, 140))
+            play_text = self.font.render("Restart", True, (255, 255, 255))
+        else:
+            self.screen.blit(self.font.render(
+                "Press Enter to Play", True, (255, 255, 255)), (50, 100))
+            play_text = self.font.render("Play", True, (255, 255, 255))
 
         # tasto play
         play_button = pygame.Rect(100, 250, 200, 50)
         # scritta play dentro superficie bottone
         pygame.draw.rect(self.screen, (0, 255, 0), play_button)
-        play_text = self.font.render(
-            "Play", True, (255, 255, 255))  # scritta play
+
         # centraggio x y scritta play
-        self.screen.blit(play_text, (play_button.x + 60, play_button.y + 7))
+        self.screen.blit(play_text, (play_button.x +
+                         40 if self.gameOver else 160, play_button.y + 7))
 
         # scritta per uscire
         exit_text = self.font.render("Press Q to exit", True, (255, 255, 255))
