@@ -3,7 +3,7 @@ import Game
 
 
 class Menu():
-    def __init__(self, gameOver):
+    def __init__(self, gameOver, points=0):
         pygame.init()
 
         # parametri schermo
@@ -15,6 +15,7 @@ class Menu():
         # parametri scritte
         self.font = pygame.font.Font(None, 50)
         self.gameOver = gameOver
+        self.points = points
 
         # parametri di gioco
         self.running = True
@@ -22,25 +23,29 @@ class Menu():
     # metodo di istanza che permette di avviare il menu
     def startMenu(self):
         # se gameOver è True significa che deve mostrare la schermata
-        # con la possibilità di fare il restart o uscire
+        # con i punti e la possibilità di fare il restart o uscire
         # altrimenti il Menu mostra il testo del menu iniziale
         if self.gameOver:
             self.screen.blit(self.font.render(
                 "GAME OVER", True, (255, 255, 255)), (100, 100))
             self.screen.blit(self.font.render(
                 "Press Enter to Restart", True, (255, 255, 255)), (20, 140))
-            play_text = self.font.render("Restart", True, (255, 255, 255))
+            self.screen.blit(self.font.render(
+                f"Points: {self.points}", True, (255, 255, 255)), (100, 340))
+            self.screen.blit(self.font.render(
+                f"Record: {Game.Game.pointsRecord}", True, (255, 255, 255)), (100, 390))
+            playText = self.font.render("Restart", True, (255, 255, 255))
         else:
             self.screen.blit(self.font.render(
                 "Press Enter to Play", True, (255, 255, 255)), (50, 100))
-            play_text = self.font.render("Play", True, (255, 255, 255))
+            playText = self.font.render("Play", True, (255, 255, 255))
 
         # disegna il tasto per il play o restart
         # a seconda della schermata di gameover posiziona la scritta
         # play o restart in una diversa posizione
         playButton = pygame.Rect(100, 250, 200, 50)
         pygame.draw.rect(self.screen, (0, 255, 0), playButton)
-        self.screen.blit(play_text, (playButton.x +
+        self.screen.blit(playText, (playButton.x +
                          40 if self.gameOver else 160, playButton.y + 7))
 
         # scritta per uscire

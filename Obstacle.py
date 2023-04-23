@@ -1,9 +1,10 @@
 from pathlib import Path
 import pygame
+import Game
 
 
 class Obstacle(pygame.sprite.Sprite):
-    def __init__(self, posx, posy):
+    def __init__(self, posx, posy, gameObject):
         super().__init__()
 
         # carica in una lista tutte le sprite per l'animazione dell'ostacolo
@@ -14,6 +15,7 @@ class Obstacle(pygame.sprite.Sprite):
         # parametri di gestione animazioni
         self.currentSprite = 0
         self.explodes = False
+        self.gameObject = gameObject
 
         # impostazione immagine iniziale con relativa maschera per le collisioni
         self.image = self.sprites[self.currentSprite]
@@ -34,6 +36,8 @@ class Obstacle(pygame.sprite.Sprite):
         if self.y == 500:
             self.explodes = True
             self.currentSprite = 5
+            if self.x < 500:
+                self.gameObject.points += 10
 
     def draw(self, surface):
         surface.blit(self.image, (self.x, self.y))
