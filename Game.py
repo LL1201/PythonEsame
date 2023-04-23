@@ -87,7 +87,7 @@ class Game():
 
             # input tasti e draw del player
             self.player.draw(self.screen)
-            self.player.handle_keys()
+            self.player.handleKeys()
             self.player.update()
 
             # draw del gruppo di ostacoli e aggiornamento con update
@@ -100,7 +100,7 @@ class Game():
             if pygame.sprite.spritecollide(self.player, self.obstacles, True, pygame.sprite.collide_mask):
                 self.collisions += 1
                 if self.collisions == 3:
-                    Menu.Menu(True).startMenu()
+                    Menu.Menu(gameOver=True).startMenu()
                     self.player.kill()
                     self.kill()
             pygame.display.update()

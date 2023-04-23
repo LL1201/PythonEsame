@@ -1,2 +1,2 @@
 import Menu
-Menu.Menu(False).startMenu()
+Menu.Menu(gameOver=False).startMenu()
