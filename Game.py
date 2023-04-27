@@ -23,6 +23,9 @@ class Game():
             f"images/assets/game/Health{i}.png")).convert_alpha(), (99, 33)) for i in range(1, 4)]
         self.currentHealthSprite = 0
 
+        self.background = pygame.image.load(
+            Path("images/background/background.png"))
+
         # parametri gestione etichetta punteggio
         self.font = pygame.font.SysFont("monospace", 30)
         self.pointsX = 320
@@ -107,7 +110,8 @@ class Game():
                 self.newObstaclesCount = 0
             self.newObstaclesCount += 0.025
 
-            self.screen.fill((255, 255, 255))
+            # self.screen.fill((255, 255, 255))
+            self.screen.blit(self.background, (0, 0))
 
             # input tasti e draw del player
             self.player.draw(self.screen)
