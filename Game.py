@@ -135,7 +135,12 @@ class Game():
                 if self.collisions == 3:
                     Menu.Menu(gameOver=True, points=self.points).startMenu()
                     self.player.kill()
-            pygame.display.update()
+            try:
+                pygame.display.update()
+            except:
+                pygame.quit()
+                self.running = False
+
             self.clock.tick(40)
 
     @property

@@ -6,6 +6,7 @@ import Game
 class Obstacle(pygame.sprite.Sprite):
     def __init__(self, posx, posy, gameObject):
         super().__init__()
+        self.sprites = []
 
         # carica in una lista tutte le sprite per l'animazione dell'ostacolo
         # utilizzando la libreria pathlib (vedi Player)
