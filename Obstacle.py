@@ -34,7 +34,7 @@ class Obstacle(pygame.sprite.Sprite):
         self.y += 4
         self.rect.topleft = [self.x, self.y]
         # appena le y sono a 500 l'ostacolo esplode
-        if self.y == 500:
+        if self.y == 400:
             self.explodes = True
             self.currentSprite = 5
             if self.x < 500:

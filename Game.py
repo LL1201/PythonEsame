@@ -121,7 +121,7 @@ class Game():
             # draw dell'health e gestione punti
             self.screen.blit(
                 self.healthSprites[self.currentHealthSprite], (self.healthX, self.healthY))
-            self.label = self.font.render(str(self.points), 1, (0, 0, 0))
+            self.label = self.font.render(str(self.points), 1, (255, 255, 255))
             self.screen.blit(self.label, (self.pointsX, self.pointsY))
             if self.points > Game.pointsRecord:
                 Game.pointsRecord = self.points

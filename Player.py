@@ -30,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         # posizionamento del giocatore nel campo di gioco
         self.displayW, displayH = pygame.display.get_surface().get_size()
         self.x = self.displayW/2 - self.image.get_rect().width
-        self.y = displayH - self.image.get_rect().height
+        self.y = displayH - self.image.get_rect().height - 100
         self.rect.topleft = [self.x, self.y]
 
     # metodo per la gestione dei tasti premuti
